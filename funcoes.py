@@ -19,3 +19,17 @@ def remover_dado(dados_rolados, dados_no_estoque, dado_para_remover):
     dados_rolados.append(dados_no_estoque[dado_para_remover])
     del dados_no_estoque_atualizado[dado_para_remover]
     return [dados_rolados_atualizado,dados_no_estoque_atualizado]
+
+def calcula_pontos_regra_simples(lista):
+    lista.sort()
+    dicio_pontuacao = {}
+    for i in range(len(lista)):
+        if lista[i] in dicio_pontuacao:
+            dicio_pontuacao[lista[i]] += lista[i]
+        else: 
+            dicio_pontuacao[lista[i]] = lista[i]
+    for numero in range(1,7):
+        if numero not in dicio_pontuacao:
+            dicio_pontuacao[numero] = 0
+    
+    return dicio_pontuacao
