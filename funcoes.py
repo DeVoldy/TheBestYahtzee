@@ -31,5 +31,11 @@ def calcula_pontos_regra_simples(lista):
     for numero in range(1,7):
         if numero not in dicio_pontuacao:
             dicio_pontuacao[numero] = 0
-    
     return dicio_pontuacao
+
+# mesma função só que sem o .sort
+def calcula_pontos_regra_simples_1(dados):
+    pontuacao = {1:0,2:0,3:0,4:0,5:0,6:0}
+    for dado in dados:
+        pontuacao[dado] += dado
+    return pontuacao
