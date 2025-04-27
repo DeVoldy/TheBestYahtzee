@@ -1,10 +1,7 @@
 import random
 
 def rolar_dados(n):
-    lista_dados = []
-    for i in range(n):
-        lista_dados.append(random.randint(1,6))
-    return lista_dados
+    return [random.randint(1,6) for i in range(n)]
 
 def guardar_dado(dados_rolados, dados_no_estoque, dado_para_guardar):
     dados_rolados_atualizado = dados_rolados
@@ -31,25 +28,11 @@ def calcula_pontos_regra_simples(lista):
     for numero in range(1,7):
         if numero not in dicio_pontuacao:
             dicio_pontuacao[numero] = 0
-    
     return dicio_pontuacao
 
-def calcula_pontos_sequencia_baixa(lista):
-    lista.sort()
-    sequencia = [] 
-    for i in range(0,5):
-        if lista[i] + 1 == lista[i+1]:
-            sequencia.append(lista[i])
-        else:
-            break
-    for i in range(1,5):
-        if lista[i] + 1 == lista[i+1]:
-            sequencia.append(lista[i])
-        else:
-            break
-    if len(sequencia) == 4:
-        return 15
-    else:
-        return 0
-
-
+# mesma função só que sem o .sort
+def calcula_pontos_regra_simples_1(dados):
+    pontuacao = {1:0,2:0,3:0,4:0,5:0,6:0}
+    for dado in dados:
+        pontuacao[dado] += dado
+    return pontuacao
