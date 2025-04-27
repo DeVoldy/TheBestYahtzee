@@ -33,3 +33,23 @@ def calcula_pontos_regra_simples(lista):
             dicio_pontuacao[numero] = 0
     
     return dicio_pontuacao
+
+def calcula_pontos_sequencia_baixa(lista):
+    lista.sort()
+    sequencia = [] 
+    for i in range(0,5):
+        if lista[i] + 1 == lista[i+1]:
+            sequencia.append(lista[i])
+        else:
+            break
+    for i in range(1,5):
+        if lista[i] + 1 == lista[i+1]:
+            sequencia.append(lista[i])
+        else:
+            break
+    if len(sequencia) == 4:
+        return 15
+    else:
+        return 0
+
+
