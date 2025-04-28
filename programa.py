@@ -56,6 +56,15 @@ elif ordem == '3':
 elif ordem =="0":
     print("Digite a combinação desejada:")
     combinacao = input(">")
+    if combinacao not in cartela_de_pontos['regra_simples'] and combinacao not in cartela_de_pontos['regra_avancada']:
+        print("Combinação inválida. Tente novamente.")
+    if combinacao in cartela_de_pontos['regra_simples'] and cartela_de_pontos['regra_simples'][combinacao] != -1:
+        print('Essa combinação já foi utilizada.')
+    if combinacao in cartela_de_pontos['regra_avancada'] and cartela_de_pontos['regra_avancada'][combinacao] != -1:
+        print('Essa combinação já foi utilizada.')
     atualizado = fun.faz_jogada(rolagem+guardados,combinacao,cartela_de_pontos)
     cartela_de_pontos = atualizado
     fun.imprime_cartela(cartela_de_pontos)
+else:
+    print('Opção inválida. Tente novamente.')
+    ordem = int(input('>'))
