@@ -39,3 +39,12 @@ def calcula_pontos_sequencia_baixa(lista):
         return 15
     else: 
         return 0
+    
+def calcula_pontos_sequencia_alta(lista):
+    analisado = calcula_pontos_regra_simples(lista)
+    if analisado[1] != 0 and analisado[2] != 0 and analisado[3] != 0 and analisado[4] != 0 and analisado[5] != 0:
+        return 30
+    elif analisado[5] != 0 and analisado[2] != 0 and analisado[3] != 0 and analisado[4] != 0 and analisado[6] != 0:
+        return 30
+    else: 
+        return 0
