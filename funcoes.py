@@ -72,3 +72,10 @@ def calcula_pontos_quadra(dados):
         if qtde >= 4:
             return calcula_pontos_soma(dados)
     return 0
+
+def calcula_pontos_quina(dados):
+    analisado = conta_dados(dados)
+    for qtde in analisado.values():
+        if qtde >= 5:
+            return 50
+    return 0
