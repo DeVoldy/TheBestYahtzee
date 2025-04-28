@@ -17,21 +17,7 @@ def remover_dado(dados_rolados, dados_no_estoque, dado_para_remover):
     del dados_no_estoque_atualizado[dado_para_remover]
     return [dados_rolados_atualizado,dados_no_estoque_atualizado]
 
-def calcula_pontos_regra_simples(lista):
-    lista.sort()
-    dicio_pontuacao = {}
-    for i in range(len(lista)):
-        if lista[i] in dicio_pontuacao:
-            dicio_pontuacao[lista[i]] += lista[i]
-        else: 
-            dicio_pontuacao[lista[i]] = lista[i]
-    for numero in range(1,7):
-        if numero not in dicio_pontuacao:
-            dicio_pontuacao[numero] = 0
-    return dicio_pontuacao
-
-# mesma função só que sem o .sort
-def calcula_pontos_regra_simples_1(dados):
+def calcula_pontos_regra_simples(dados):
     pontuacao = {1:0,2:0,3:0,4:0,5:0,6:0}
     for dado in dados:
         pontuacao[dado] += dado
@@ -44,19 +30,15 @@ def calcula_pontos_soma(dados):
     return pontuacao
 
 def calcula_pontos_sequencia_baixa(lista):
-    lista.sort()
-    sequencia = [] 
-    for i in range(0,5):
-        if lista[i] + 1 == lista[i+1]:
-            sequencia.append(lista[i])
-        else:
-            break
-    for i in range(1,5):
-        if lista[i] + 1 == lista[i+1]:
-            sequencia.append(lista[i])
-        else:
-            break
-    if len(sequencia) == 4:
+    analisado = calcula_pontos_regra_simples(lista)
+    if analisado[1] != 0 and analisado[2] != 0 and analisado[3] != 0 and analisado[4] != 0:
         return 15
-    else:
+    elif analisado[5] != 0 and analisado[2] != 0 and analisado[3] != 0 and analisado[4] != 0:
+        return 15
+    elif analisado[5] != 0 and analisado[6] != 0 and analisado[3] != 0 and analisado[4] != 0:
+        return 15
+    else: 
         return 0
+    
+print(calcula_pontos_sequencia_baixa([5, 3, 4, 2, 2]))
+print(calcula_pontos_sequencia_baixa([2, 3, 4, 6, 2]))
