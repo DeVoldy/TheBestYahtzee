@@ -68,7 +68,7 @@ def calcula_pontos_full_house(lista):
     
 def calcula_pontos_quadra(dados):
     analisado = conta_dados(dados)
-    if 4 in analisado.values():
-        return calcula_pontos_soma(dados)
-    else:
-        return 0
+    for qtde in analisado.values():
+        if qtde >= 4:
+            return calcula_pontos_soma(dados)
+    return 0
