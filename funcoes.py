@@ -39,6 +39,3 @@ def calcula_pontos_sequencia_baixa(lista):
         return 15
     else: 
         return 0
-    
-print(calcula_pontos_sequencia_baixa([5, 3, 4, 2, 2]))
-print(calcula_pontos_sequencia_baixa([2, 3, 4, 6, 2]))
