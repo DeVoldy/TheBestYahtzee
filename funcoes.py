@@ -93,11 +93,13 @@ def calcula_pontos_regra_avancada(dados):
 def faz_jogada(dados, categoria, cartela):
     simples = calcula_pontos_regra_simples(dados)
     avancada = calcula_pontos_regra_avancada(dados)
-
-    if categoria in simples:
-        pontuacao = simples[categoria]
-        cartela["regra_simples"][categoria] = pontuacao
-    elif categoria in avancada:
+    if categoria in avancada:
         pontuacao = avancada[categoria]
         cartela["regra_avancada"][categoria] = pontuacao
+    else:
+        categoria = int(categoria)
+        if categoria in simples:
+            pontuacao = simples[categoria]
+            cartela["regra_simples"][categoria] = pontuacao
+    
     return cartela
