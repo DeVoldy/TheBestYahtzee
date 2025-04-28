@@ -36,3 +36,9 @@ def calcula_pontos_regra_simples_1(dados):
     for dado in dados:
         pontuacao[dado] += dado
     return pontuacao
+
+def calcula_pontos_soma(dados):
+    pontuacao = 0
+    for dado in dados:
+        pontuacao += dado
+    return pontuacao
