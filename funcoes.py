@@ -48,3 +48,20 @@ def calcula_pontos_sequencia_alta(lista):
         return 30
     else: 
         return 0
+
+# Função extra para contar a quantidade de cada dado
+def conta_dados(lista):
+    qtde_dados = {1:0,2:0,3:0,4:0,5:0,6:0}
+    for dado in lista:
+        qtde_dados[dado] += 1
+    return qtde_dados
+
+def calcula_pontos_full_house(lista):
+    analisado = conta_dados(lista)
+    dados = []
+    for qtd in analisado.values():
+        dados.append(qtd)
+    if 2 in dados and 3 in dados:
+        return calcula_pontos_soma(lista)
+    else:
+        return 0
