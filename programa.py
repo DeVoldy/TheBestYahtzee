@@ -106,6 +106,8 @@ while i < 12:
 soma = 0
 for pontos in cartela_de_pontos["regra_simples"].values(): 
     soma += pontos
+if soma >= 63:
+    soma += 35
 for pontos1 in cartela_de_pontos["regra_avancada"].values():
     soma += pontos1
 fun.imprime_cartela(cartela_de_pontos)
