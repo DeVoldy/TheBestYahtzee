@@ -76,15 +76,19 @@ while i < 12:
     elif str(ordem) == '0':
         print("Digite a combinação desejada:")
         combinacao = input(">")
-        while combinacao not in str(cartela_de_pontos['regra_simples']) and combinacao not in cartela_de_pontos['regra_avancada']:
-            print("Combinação inválida. Tente novamente.")
-            combinacao = input(">")
-        while combinacao in str(cartela_de_pontos['regra_simples']) and cartela_de_pontos['regra_simples'][int(combinacao)] != -1:
-            print('Essa combinação já foi utilizada.')
-            combinacao = input(">")
-        while combinacao in cartela_de_pontos['regra_avancada'] and cartela_de_pontos['regra_avancada'][combinacao] != -1:
-            print('Essa combinação já foi utilizada.')
-            combinacao = input(">")
+        valida = False
+        while not valida: 
+            if combinacao not in str(cartela_de_pontos['regra_simples']) and combinacao not in cartela_de_pontos['regra_avancada']:
+                print("Combinação inválida. Tente novamente.")
+                combinacao = input(">")
+            elif combinacao in str(cartela_de_pontos['regra_simples']) and cartela_de_pontos['regra_simples'][int(combinacao)] != -1:
+                print('Essa combinação já foi utilizada.')
+                combinacao = input(">")
+            elif combinacao in cartela_de_pontos['regra_avancada'] and cartela_de_pontos['regra_avancada'][combinacao] != -1:
+                print('Essa combinação já foi utilizada.')
+                combinacao = input(">")
+            else:
+                valida = True
         atualizado = fun.faz_jogada(rolagem+guardados,combinacao,cartela_de_pontos)
         cartela_de_pontos = atualizado
         i += 1
